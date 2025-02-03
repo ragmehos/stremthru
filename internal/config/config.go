@@ -179,7 +179,7 @@ var config = func() Config {
 	buddyUrl, _ := parseUri(getEnv("STREMTHRU_BUDDY_URI", ""))
 	peerUrl, peerAuthToken := parseUri(getEnv("STREMTHRU_PEER_URI", ""))
 
-	databaseUri := getEnv("STREMTHRU_DATABASE_URI", "sqlite://./data/stremthru.db")
+	databaseUri := getEnv("STREMTHRU_DATABASE_URI", "")
 
 	stremioAddon := StremioAddonConfig{
 		enabled: strings.FieldsFunc(strings.TrimSpace(getEnv("STREMTHRU_STREMIO_ADDON", strings.Join(stremioAddons, ","))), func(c rune) bool {
