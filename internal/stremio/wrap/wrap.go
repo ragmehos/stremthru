@@ -522,10 +522,14 @@ func handleStrem(w http.ResponseWriter, r *http.Request) {
 	}
 
 	ctx.Store, ctx.StoreAuthToken = ud.stores[0].store, ud.stores[0].authToken
+        log.Info(len(ud.stores))
 	if len(ud.stores) > 1 {
 		storeCode := store.StoreCode(strings.ToLower(r.PathValue("s")))
+                log.Info(storeCode)
 		for i := range ud.stores {
 			us := &ud.stores[i]
+                        log.Info(us.store.GetName().Code())
+                        log.Info(us.store.GetName().Code() == storeCode)
 			if us.store.GetName().Code() == storeCode {
 				ctx.Store, ctx.StoreAuthToken = us.store, us.authToken
 				break
