@@ -525,8 +525,8 @@ func handleStrem(w http.ResponseWriter, r *http.Request) {
 	ctx.Store, ctx.StoreAuthToken = ud.stores[0].store, ud.stores[0].authToken
         log.Info(fmt.Sprintf("%d", len(ud.stores)))
 	if len(ud.stores) > 1 {
-		storeCode := store.StoreCode(strings.ToLower(r.PathValue("s")))
-		log.Info(fmt.Sprintf("%s", strings.ToLower(r.PathValue("s")))
+		query := r.URL.Query()
+		storeCode := store.StoreCode(strings.ToLower(query.Get("s")))
                 log.Info(fmt.Sprintf("%s", storeCode))
 		for i := range ud.stores {
 			us := &ud.stores[i]
